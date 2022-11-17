@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int              @id @default(autoincrement())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  email          String           @unique
+  password       String
+  fullName       String?
+  ForgetPassword ForgetPassword[]
+}
+
+model Satisfied {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  icon      String
+  commment  String
+  star      Float?   @default(5)
+  name      String
+  broker    String?
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  body      String
+  readTime  Int
+  image     String
+  name      String
+  pageName  String?  @default("")
+      keywords  String?  @default("auto transport company, car shipping company, car shipping companies, companies that ship cars, auto transport companies, car transport companies, best car shipping company, best company to ship a car, car moving companies, car hauling companies, auto shipping companies, vehicle transport company, vehicle transportation company, safeeds, safeeds transport, safeeds transport inc, vehicle shipping, new york auto shipping")
+}
+
+model ForgetPassword {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  expireIn  DateTime
+  user      User     @relation(fields: [userId], references: [id])
+  code      Int
+  userId    Int
+  isChecked Boolean  @default(false)
+}
