@@ -5,9 +5,12 @@ import { FileUploadController } from './file/file.upload.controller';
 import * as path from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { EmailController } from './email/email.controller';
-import { ArticleModule } from './article/article.module';
+import { AchievementModule } from './achievement/achievement.module';
 import { PrismaService } from './prisma/prisma.service';
 import { SatisfiedModule } from './satisfied/satisfied.module';
+import { EventModule } from './event/event.module';
+import { HistoryModule } from './history/history.module';
+import { PlanModule } from './plan/plan.module';
 
 @Module({
   imports: [
@@ -20,8 +23,11 @@ import { SatisfiedModule } from './satisfied/satisfied.module';
     }),
     ZipcodeModule,
     AuthModule,
-    ArticleModule,
     SatisfiedModule,
+    AchievementModule,
+    EventModule,
+    HistoryModule,
+    PlanModule,
   ],
   controllers: [FileUploadController, EmailController],
   providers: [PrismaService],

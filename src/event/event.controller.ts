@@ -10,15 +10,15 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { ArticleService } from './article.service';
+import { EventService } from './event.service';
 
-@Controller('article')
-export class ArticleController {
-  constructor(private readonly articleService: ArticleService) {}
+@Controller('event')
+export class EventController {
+  constructor(private readonly achievementService: EventService) {}
 
   @Get('/')
   async getAll(@Query() query?: any) {
-    const data = await this.articleService.getAll(query).catch((e) => {
+    const data = await this.achievementService.getAll(query).catch((e) => {
       throw new HttpException(
         {
           statusCode: HttpStatus.BAD_REQUEST,
@@ -33,7 +33,7 @@ export class ArticleController {
 
   @Post('/')
   async save(@Body() body) {
-    const data = await this.articleService.save(body).catch((e) => {
+    const data = await this.achievementService.save(body).catch((e) => {
       throw new HttpException(
         {
           statusCode: HttpStatus.BAD_REQUEST,
@@ -48,7 +48,7 @@ export class ArticleController {
 
   @Put('/:id')
   async update(@Param('id') id: number, @Body() body: any) {
-    const data = await this.articleService.update(id, body).catch((e) => {
+    const data = await this.achievementService.update(id, body).catch((e) => {
       throw new HttpException(
         {
           statusCode: HttpStatus.BAD_REQUEST,
@@ -63,7 +63,7 @@ export class ArticleController {
 
   @Get('/:id')
   async getOne(@Param('id') id: number) {
-    const data = await this.articleService.getOne(id).catch((e) => {
+    const data = await this.achievementService.getOne(id).catch((e) => {
       throw new HttpException(
         {
           statusCode: HttpStatus.BAD_REQUEST,
@@ -78,7 +78,7 @@ export class ArticleController {
 
   @Delete('/:id')
   async delete(@Param('id') id: number) {
-    const data = await this.articleService.delete(id).catch((e) => {
+    const data = await this.achievementService.delete(id).catch((e) => {
       throw new HttpException(
         {
           statusCode: HttpStatus.BAD_REQUEST,
