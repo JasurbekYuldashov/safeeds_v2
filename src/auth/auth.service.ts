@@ -114,7 +114,8 @@ export class AuthService {
       subject: 'Forget password',
       html: `<h2>${numbers}</h2>`,
     };
-    await transporter.sendMail(mailOptions).catch((e) => {
+    const a = await transporter();
+    a.sendMail(mailOptions).catch((e) => {
       throw new HttpException(
         { statusCode: HttpStatus.UNAUTHORIZED, error: 'Email error' },
         HttpStatus.NOT_FOUND,
