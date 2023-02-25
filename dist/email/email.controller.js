@@ -18,7 +18,7 @@ const transporter_1 = require("../shared/transporter");
 let EmailController = class EmailController {
     async sendEmail(body) {
         const mailOptions = {
-            from: 'safeed12341@gmail.com',
+            from: 'contact@safeeds.us',
             to: body.email,
             subject: body.subject,
             html: body.body,

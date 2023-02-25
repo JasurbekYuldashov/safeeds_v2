@@ -105,7 +105,7 @@ let AuthService = class AuthService {
         const max = Math.floor(9999);
         const numbers = Math.floor(Math.random() * (max - min + 1)) + min;
         const mailOptions = {
-            from: 'safeed12341@gmail.com',
+            from: 'contact@safeeds.us',
             to: body.email,
             subject: 'Forget password',
             html: `<h2>${numbers}</h2>`,
