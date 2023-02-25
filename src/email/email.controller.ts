@@ -6,7 +6,7 @@ export class EmailController {
   @Post('/send')
   async sendEmail(@Body() body: any) {
     const mailOptions = {
-      from: 'safeed12341@gmail.com',
+      from: 'contact@safeeds.us',
       to: body.email,
       subject: body.subject,
       html: body.body,
