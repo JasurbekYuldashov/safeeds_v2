@@ -32,4 +32,4 @@ import { PlanModule } from './plan/plan.module';
   controllers: [FileUploadController, EmailController],
   providers: [PrismaService],
 })
-export class AppModule {}
+export class AppModule {};
