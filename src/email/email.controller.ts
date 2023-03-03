@@ -11,7 +11,7 @@ export class EmailController {
       subject: body.subject,
       html: body.body,
     };
-    const a = await transporter()
+    const a = await transporter();
     const send = await a.sendMail(mailOptions);
     return send;
   }
