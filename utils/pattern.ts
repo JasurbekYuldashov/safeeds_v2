@@ -1,0 +1,1 @@
+export const pattern = new RegExp(`(\\S+\\s+){0,${19}}\\S+`);
