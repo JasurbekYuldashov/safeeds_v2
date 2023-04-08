@@ -13,7 +13,7 @@ export class PlanService {
         ...r,
         body: r.body.match(pattern)?.[0] || '',
       };
-    });
+    })
   }
 
   async save(data?: any): Promise<any> {
