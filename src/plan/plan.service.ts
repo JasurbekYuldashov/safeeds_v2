@@ -1,3 +1,4 @@
+import { pattern } from './../../utils/pattern';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -6,7 +7,13 @@ export class PlanService {
   constructor(private prisma: PrismaService) {}
 
   async getAll(query?: any): Promise<any> {
-    return this.prisma.plan.findMany({});
+    const data = await this.prisma.plan.findMany();
+    return data.map((r) => {
+      return {
+        ...r,
+        body: r.body.match(pattern)?.[0] || '',
+      };
+    });
   }
 
   async save(data?: any): Promise<any> {

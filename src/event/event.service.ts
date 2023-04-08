@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { pattern } from 'utils/pattern';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -6,7 +7,13 @@ export class EventService {
   constructor(private prisma: PrismaService) {}
 
   async getAll(query?: any): Promise<any> {
-    return this.prisma.event.findMany({});
+    const data = await this.prisma.event.findMany();
+    return data.map((r) => {
+      return {
+        ...r,
+        body: r.body.match(pattern)?.[0] || '',
+      };
+    });
   }
 
   async save(data?: any): Promise<any> {
