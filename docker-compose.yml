@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:14
+    container_name: uzcomcanada
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: cuba
+      POSTGRES_DB: safeed
+    ports:
+      - "5432:5432"
+    volumes:
+      - nest-auth-example_postgres-data:/var/lib/postgresql/data
+
+volumes:
+  nest-auth-example_postgres-data:
